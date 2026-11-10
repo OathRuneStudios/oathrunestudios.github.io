@@ -1,0 +1,47 @@
+PROPRIETARY COMMERCIAL SOURCE-AVAILABLE LICENSE
+Copyright (c) 2026 Generation Studios. All rights reserved. 
+
+=============================================================================== 
+
+1. SCOPE AND INTENT
+===============================================================================
+
+This software and its associated source code, assets, and documentation
+("the Game") are proprietary and commercially owned by the Copyright Holder.
+The source code is made visible publicly on GitHub solely to facilitate
+community feedback, bug reporting, and development contributions via Pull
+Requests. 
+
+### ===============================================================================
+2. RESTRICTIONS (WHAT YOU CANNOT DO)
+
+* NO DISTRIBUTION: You may not distribute, redistribute, sublicense, lease,
+or rent the source code or compiled binaries of the Game, in whole or in
+part, to any third party.
+* NO COMMERCIAL USE: You may not use this source code or any derivative
+works for any commercial purpose.
+* NO RE-BRANDING / CLONING: You may not use this code to create a competing
+product, a "fork" distributed outside of this official repository, or a
+re-skinned version of the Game.
+* NO FALSE ATTRIBUTION: You may not claim ownership over this code, remove
+copyright notices, or misrepresent yourself as the original creator of
+the Game.
+
+### ===============================================================================
+3. ALLOWED USAGE (WHAT YOU CAN DO)
+
+* LOCAL DEVELOPMENT: You may clone and modify the source code strictly on
+your local machine for the sole purpose of testing, playing privately, or
+developing patches.
+* PULL REQUESTS: You are permitted to submit modifications back to the
+official upstream repository via GitHub Pull Requests.
+
+### ===============================================================================
+4. CONTRIBUTION LICENSE GRANT
+
+By submitting a Pull Request or contributing code to this repository, you
+hereby grant the Copyright Holder a perpetual, worldwide, non-exclusive,
+no-charge, royalty-free, irrevocable copyright license to use, reproduce,
+modify, distribute, and sell your contributions as part of the Game. You
+retain ownership of your specific contribution, but give us full rights to
+use it commercially.
