@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="description" content="OathRune Studios — worlds are built on legends. Independent game development with imagination, atmosphere and adventure.">
+  <title>OathRune Studios</title>
+  <link rel="icon" type="image/png" href="assets/oathrune-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --panel: #121212;
+      --gold: #c6a15b;
+      --gold-light: #e4c98e;
+      --text: #eee9df;
+      --muted: #a7a096;
+      --line: rgba(198,161,91,.25);
+      --serif: "Cinzel", Georgia, serif;
+      --sans: "Inter", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg);
+      font-family: var(--sans); line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px);
+      background: rgba(11,11,12,.88); border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1180px; min-height: 78px; margin: auto; padding: 12px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .brand img { width: 48px; height: 48px; object-fit: cover; border-radius: 50%; border: 1px solid var(--line); }
+    .brand-name { font: 600 17px var(--serif); letter-spacing: .12em; white-space: nowrap; }
+    .brand-name span { display: block; color: var(--gold); font: 10px var(--sans); letter-spacing: .42em; margin-top: 1px; }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { color: #c8c1b5; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .menu-toggle { display: none; background: none; color: var(--gold); border: 1px solid var(--line); padding: 8px 12px; font-size: 20px; }
+    .hero {
+      min-height: 690px; display: grid; place-items: center; text-align: center; padding: 80px 24px;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 50% 42%, rgba(121,88,39,.18), transparent 48%),
+                  linear-gradient(180deg, rgba(0,0,0,.22), #0b0b0c 100%),
+                  url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2200&q=85") center/cover;
+    }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.22), rgba(0,0,0,.55)); }
+    .hero-content { position: relative; max-width: 850px; }
+    .hero-logo {
+      width: min(310px, 68vw); aspect-ratio: 1; object-fit: cover; border-radius: 50%;
+      border: 1px solid rgba(214,177,105,.55); box-shadow: 0 0 70px rgba(198,161,91,.16);
+      margin: 0 auto 30px; display: block;
+    }
+    .eyebrow { color: var(--gold-light); font-size: 11px; letter-spacing: .38em; text-transform: uppercase; }
+    h1 { font: 500 clamp(34px, 6vw, 62px)/1.2 var(--serif); letter-spacing: .06em; margin: 15px 0; }
+    .hero p { color: #d0c9bd; max-width: 620px; margin: 0 auto 30px; font-size: 16px; }
+    .button {
+      display: inline-block; border: 1px solid var(--gold); color: var(--gold-light);
+      padding: 12px 25px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      transition: .2s;
+    }
+    .button:hover { color: #100e0a; background: var(--gold); }
+    section { padding: 100px 24px; }
+    .wrap { max-width: 1050px; margin: auto; }
+    .section-label { color: var(--gold); font-size: 10px; letter-spacing: .35em; text-transform: uppercase; }
+    h2 { font: 500 clamp(27px, 4vw, 40px)/1.25 var(--serif); margin: 12px 0 22px; }
+    .intro { max-width: 720px; color: var(--muted); font-size: 15px; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: center; }
+    .seal-card { display: grid; place-items: center; padding: 22px; border: 1px solid var(--line); background: linear-gradient(145deg,#171513,#0d0d0e); }
+    .seal-card img { width: min(100%, 310px); border-radius: 50%; }
+    .games { background: #101011; border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); }
+    .game-card { margin-top: 35px; padding: 38px; border: 1px solid var(--line); background: linear-gradient(120deg,rgba(198,161,91,.08),transparent 55%),#0d0d0e; }
+    .game-card .status { color: var(--gold); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; }
+    .game-card h3 { font: 500 25px var(--serif); margin: 10px 0; }
+    .game-card p { color: var(--muted); max-width: 650px; margin-bottom: 0; }
+    .values { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 35px; }
+    .value { padding: 25px; border-top: 1px solid var(--gold); background: #111112; }
+    .value h3 { font: 500 17px var(--serif); color: var(--gold-light); }
+    .value p { color: var(--muted); font-size: 13px; }
+    .contact { text-align: center; background: radial-gradient(ellipse at center,rgba(121,88,39,.13),transparent 65%); }
+    .contact p { color: var(--muted); }
+    footer { border-top: 1px solid var(--line); padding: 27px 24px; color: #777168; font-size: 11px; }
+    .footer-inner { max-width: 1050px; margin: auto; display: flex; justify-content: space-between; gap: 20px; }
+    @media (max-width: 720px) {
+      .nav { min-height: 68px; padding: 10px 18px; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-name { font-size: 14px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 22px; background: #0d0d0e; border-bottom: 1px solid var(--line); flex-direction: column; gap: 20px; }
+      .nav-links.open { display: flex; }
+      .hero { min-height: 620px; }
+      section { padding: 72px 22px; }
+      .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .seal-card img { max-width: 240px; }
+      .values { grid-template-columns: 1fr; }
+      .game-card { padding: 25px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="OathRune Studios home">
+        <img src="assets/oathrune-logo.png" alt="OathRune Studios runic emblem">
+        <span class="brand-name">OATHRUNE<span>STUDIOS</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#games">Our Games</a><a href="#vision">Our Vision</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <img class="hero-logo" src="assets/oathrune-logo.png" alt="OathRune Studios logo">
+        <div class="eyebrow">Independent Game Development</div>
+        <h1>Worlds Are Built on Legends.</h1>
+        <p>We create immersive worlds shaped by discovery, atmosphere and meaningful adventure.</p>
+        <a class="button" href="#games">Explore Our Worlds</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div>
+          <div class="section-label">Who We Are</div>
+          <h2>Every world has a story.</h2>
+          <p class="intro">OathRune Studios is an independent game studio focused on creating memorable interactive experiences. We believe great games are more than places to visit — they are worlds to explore, stories to shape and experiences to remember.</p>
+        </div>
+        <div class="seal-card"><img src="assets/oathrune-logo.png" alt="OathRune Studios emblem"></div>
+      </div>
+    </section>
+
+    <section class="games" id="games">
+      <div class="wrap">
+        <div class="section-label">In Development</div>
+        <h2>Our Games</h2>
+        <p class="intro">New worlds take time to forge. Follow our journey as we bring original ideas to life.</p>
+        <article class="game-card">
+          <div class="status">A world in the making</div>
+          <h3>Our Next World</h3>
+          <p>Something is taking shape behind the rune. More details will be revealed when the time is right.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="wrap">
+        <div class="section-label">What Guides Us</div>
+        <h2>Built with purpose.</h2>
+        <div class="values">
+          <article class="value"><h3>Immersion</h3><p>Worlds that feel cohesive, atmospheric and worth getting lost in.</p></article>
+          <article class="value"><h3>Discovery</h3><p>Experiences that reward curiosity and invite players to find their own stories.</p></article>
+          <article class="value"><h3>Craft</h3><p>Thoughtful design, meaningful systems and attention to the details that matter.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="section-label">Stay Connected</div>
+        <h2>The journey is only beginning.</h2>
+        <p>Follow OathRune Studios for future announcements and development updates.</p>
+        <a class="button" href="https://github.com/" target="_blank" rel="noopener">Find Us on GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner"><span>© <span id="year"></span> OathRune Studios. All rights reserved.</span><span>Worlds Are Built on Legends.</span></div></footer>
+  <script>
+    const toggle = document.getElementById("menuToggle");
+    const links = document.getElementById("navLinks");
+    toggle.addEventListener("click", () => {
+      const isOpen = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    links.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      links.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
